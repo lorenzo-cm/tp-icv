@@ -6,6 +6,7 @@ __pycache__
 dados/
 *.jpg
 *.txt
+*.png
 
 # models
 *.pth
