@@ -4,14 +4,21 @@ import joblib
 
 from .hog_op import compute_hog_X
 
-def train_hog(X_train, y_train):
-    X_train_hog = compute_hog_X(X_train)
+def train_hog(X_train, y_train, orientations=9, pixels_per_cell=(8,8), cells_per_block=(2,2)):
+    X_train_hog = compute_hog_X(X_train,
+                                orientations,
+                                pixels_per_cell,
+                                cells_per_block)
     classifier = SVC(kernel='linear', probability=True)
+    
     classifier.fit(X_train_hog, y_train)
     return classifier
     
-def test_hog(classifier, X_test, y_test):
-    X_test_hog = compute_hog_X(X_test)
+def test_hog(classifier, X_test, y_test, orientations=9, pixels_per_cell=(8,8), cells_per_block=(2,2)):
+    X_test_hog = compute_hog_X(X_test,
+                               orientations,
+                               pixels_per_cell,
+                               cells_per_block)
 
     y_pred = classifier.predict(X_test_hog)
     accuracy = accuracy_score(y_test, y_pred)

@@ -13,7 +13,7 @@ def pre_process(image):
     return dilation_median
 
 
-def extract_characters(image, width=25, overlap=2, space_between=5, initial_space = 10):
+def extract_characters(image, width=25, overlap=2, space_between=5, initial_space=10):
     dilation_median = pre_process(image)
     
     if overlap > initial_space:
